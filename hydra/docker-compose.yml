@@ -1,0 +1,38 @@
+version: '3.4'
+
+networks:
+  abelord:
+    external:
+      name: abelord.localhost
+
+services:
+
+  hydra-migrate:
+    image: oryd/hydra:v1.0.8
+    command: migrate sql -e -y
+    networks:
+      default:
+      abelord:
+    env_file: ".env.dev"
+    restart: on-failure
+
+  hydra:
+    image: oryd/hydra:v1.0.8
+    command: serve all --dangerous-force-http
+    depends_on:
+      - hydra-migrate
+    networks:
+      default:
+      abelord:
+    ports:
+      # Public port
+      - "4444:4444"
+      # Admin port
+      - "4445:4445"
+      # Port for hydra token user
+      - "5555:5555"
+    env_file: ".env.dev"
+    restart: unless-stopped
+
+volumes:
+  postgres-data:

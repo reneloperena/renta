@@ -1,0 +1,17 @@
+version: '3.4'
+
+networks:
+  abelord:
+    external:
+      name: abelord.localhost
+
+services:
+  identity:
+    image: 
+    env_file:
+      - ./.env
+    networks:
+      default:
+      abelord:
+    ports:
+      - "4100:4100"
