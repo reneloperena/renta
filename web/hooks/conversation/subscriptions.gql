@@ -1,0 +1,7 @@
+#import "./fragments.gql"
+
+subscription messageAdded($conversationId: ID!) {
+  messageAdded(conversationId: $conversationId) {
+    ...MessageEdgeFragment
+  }
+}

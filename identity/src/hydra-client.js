@@ -1,6 +1,7 @@
 import { AdminApi } from '@oryd/hydra-client'
 import config from './config'
 
-const hydraAdmin = new AdminApi(config.get('hydra.url'))
+console.log(config.HYDRA_ADMIN_URL)
+const hydraAdmin = new AdminApi({ basePath: config.HYDRA_ADMIN_URL })
 
 export default hydraAdmin

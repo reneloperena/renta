@@ -1,0 +1,39 @@
+fragment CoordinatesFragment on Coordinates {
+  latitude
+  longitude
+}
+
+fragment ListingConnectionFragment on ListingConnection {
+  pageInfo {
+    hasNextPage
+    hasPreviousPage
+    startCursor
+    endCursor
+  }
+  edges {
+    node {
+      ...ListingFragment
+    }
+    cursor
+  }
+}
+
+fragment ListingFragment on Listing {
+  id
+  title
+  address {
+    line1
+    line2
+    city
+    state
+    country
+    zipCode
+    geo {
+      latitude
+      longitude
+    }
+  }
+  price
+  listingType
+  transactionType
+}

@@ -1,0 +1,18 @@
+#import "./fragments.gql"
+
+# Get a Conversation
+query getConversationById($id: ID!, $last: Int, $before: ConnectionCursor) {
+  conversation(id: $id) {
+    ...ConversationQueryFragment
+    messages (last: $last, before: $before) {
+      ...MessageConnectionFragment
+    }
+  }
+}
+
+# Get Conversations
+query getConversations {
+  conversations {
+    ...ConversationQueryFragment
+  }
+}

@@ -1,0 +1,8 @@
+#import "./fragments.gql"
+
+# Get a Conversation
+query getMe {
+  me {
+    ...UserData
+  }
+}

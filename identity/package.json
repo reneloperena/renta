@@ -8,10 +8,18 @@
     "start": "next start"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
     "@oryd/hydra-client": "^1.8.5",
+    "csurf": "^1.11.0",
+    "envalid": "^6.0.2",
+    "final-form": "^4.20.1",
     "next": "9.5.3",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-final-form": "^6.5.1",
+    "validator": "^13.1.17"
   },
   "devDependencies": {
     "standard": "^14.3.4"

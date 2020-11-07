@@ -1,41 +1,12 @@
-import convict from 'convict'
+import envalid from 'envalid'
+const { bool, num, str } = envalid
 
-const config = convict({
-  env: {
-    doc: 'The application environment.',
-    format: ['production', 'development', 'test'],
-    default: 'development',
-    env: 'NODE_ENV'
-  },
-  application: {
-    hostname: {
-      env: 'HOSTNAME',
-      doc: 'The application hostname,',
-      default: 'identity.development'
-    },
-    port: {
-      env: 'PORT',
-      doc: 'The application port.',
-      default: 4000
-    }
-  },
-  hydra: {
-    url: {
-      env: 'HYDRA_ADMIN_URL',
-      doc: 'Hydra hostname/ip',
-      format: '*',
-      default: 'hydra.development'
-    }
-  }
+export default envalid.cleanEnv(process.env, {
+  PORT: num({ default: 3002 }),
+  HYDRA_ADMIN_URL: str({ default: 'http://hydra.abelord.localhost:4445' }),
+  HYDRA_TOKEN_URL: str({ default: 'http://hydra.abelord.localhost:4444/oauth2/token' }),
+  HYDRA_OAUTH2_ERROR_URL: str({ default: '' }),
+  HYDRA_SESSION_LIFESPAN: num({ default: 86400 }),
+  MOCK_TLS_TERMINATION: bool({ default: false }),
+  OAUTH2_CLIENT_DOMAINS: str({ default: '' })
 })
-
-/*
- * For future reference, load up environment files
- *
- * const env = config.get('env')
- * config.loadFile(`.env.${env})
- */
-
-config.validate({ allowed: 'strict' })
-
-export default config

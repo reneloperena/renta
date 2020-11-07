@@ -1,0 +1,21 @@
+#import "./fragments.gql"
+
+query getGeocoding ($address: String!) {
+  getGeocoding(address: $address) {
+    ...CoordinatesFragment
+  }
+}
+
+query getListings ($minLongitude: Float!, $minLatitude: Float!, $maxLongitude: Float!, $maxLatitude: Float!) {
+	listings (filter: {
+    envelope: {
+      minLongitude: $minLongitude
+      minLatitude: $minLatitude
+      maxLongitude: $maxLongitude
+      maxLatitude: $maxLatitude
+    },
+    transactionType: RENT
+  }) {
+    ...ListingConnectionFragment
+  }
+}

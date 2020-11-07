@@ -1,4 +1,5 @@
 import withRoot from '../modules/withRoot'
+import withApollo from '../lib/withApollo'
 // --- Post bootstrap -----
 import React from 'react'
 import AppFooter from '../views/AppFooter'
@@ -15,4 +16,5 @@ function Index () {
   )
 }
 
-export default withRoot(Index)
+export default withApollo()(withRoot(Index))
+

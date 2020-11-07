@@ -5,6 +5,13 @@ module.exports = {
       use: 'raw-loader'
     })
 
+    config.module.rules.push({
+      test: /\.(gql|graphql)$/,
+      loader: 'graphql-tag/loader',
+      exclude: ['/node_modules/', '/.next/'],
+      enforce: 'pre'
+    })
+
     return config
   }
 }

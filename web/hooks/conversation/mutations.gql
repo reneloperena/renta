@@ -1,0 +1,7 @@
+#import "./fragments.gql"
+
+mutation sendMessage ($body: String!, $contentType: String!, $conversationId: ID!) {
+  sendMessage(conversationId: $conversationId, message: { body: $body, contentType: $contentType}) {
+    ...MessageFragment
+  }
+}

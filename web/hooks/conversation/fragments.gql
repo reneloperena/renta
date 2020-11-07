@@ -1,0 +1,36 @@
+fragment MessageConnectionFragment on MessageConnection {
+  pageInfo {
+    endCursor
+    startCursor
+  }
+  edges {
+    ...MessageEdgeFragment
+  }
+}
+
+fragment MessageEdgeFragment on MessageEdge {
+  cursor
+  node {
+    ...MessageFragment
+  }
+}
+
+fragment MessageFragment on Message {
+  body
+  contentType
+  sender {
+    ...UserData
+  }
+  sentAt
+}
+
+fragment UserData on User {
+  id
+  name
+  avatar
+  email
+}
+
+fragment ConversationQueryFragment on Conversation {
+  id
+}

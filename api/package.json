@@ -1,0 +1,22 @@
+{
+  "name": "@vuh/api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "BABEL_DISABLE_CACHE=1 node -r @babel/register src/server.js",
+    "dev": "nodemon -r @babel/register src/server.js"
+  },
+  "dependencies": {
+    "@apollo/gateway": "^0.21.0",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/register": "^7.12.1",
+    "apollo-server": "^2.18.2",
+    "graphql": "^15.4.0",
+    "standard": "^15.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import useListing from '../../hooks/useListing'
+import useListing from '../../hooks/listing/useListing'
 import ListingSummary from './Summary'
 import ImageCarousel from './ImageCarousel'
 import AgentInfo from './AgentInfo'
@@ -34,7 +34,6 @@ const styles = (theme) => ({
 function Listing (props) {
   const { classes } = props
   const { listing, loading } = useListing()
-  console.log(listing)
   return (
     <Grid container direction='column' alignItems='stretch' justify='center'>
       <Grid item>

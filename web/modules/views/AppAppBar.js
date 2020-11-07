@@ -4,7 +4,9 @@ import clsx from 'clsx'
 import { withStyles } from '@material-ui/core/styles'
 import Link from '@material-ui/core/Link'
 import AppBar from '../../components/AppBar'
+import Button from '../../components/Button'
 import Toolbar, { styles as toolbarStyles } from '../../components/Toolbar'
+import { signIn, signOut, useSession } from 'next-auth/client'
 
 const styles = (theme) => ({
   title: {
@@ -53,23 +55,12 @@ function AppAppBar (props) {
             {'Abelord'}
           </Link>
           <div className={classes.right}>
-            <Link
-              color='inherit'
-              variant='h6'
-              underline='none'
+            <Button
               className={classes.rightLink}
-              href='/iniciar-sesion'
+              onClick={signIn}
             >
               {'Iniciar Sesión'}
-            </Link>
-            <Link
-              variant='h6'
-              underline='none'
-              className={clsx(classes.rightLink, classes.linkSecondary)}
-              href='/crear-cuenta'
-            >
-              {'Crear Cuenta'}
-            </Link>
+            </Button>
           </div>
         </Toolbar>
       </AppBar>
